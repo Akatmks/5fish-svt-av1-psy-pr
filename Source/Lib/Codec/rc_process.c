@@ -1709,7 +1709,7 @@ static Bool does_sb_tpl_favour_intra_mode(PictureControlSet *pcs, uint32_t sb_in
 
     // Check that TPL data is available and that INTRA was tested in TPL.
     // Note that not all INTRA modes may be tested in TPL.
-    if (ppcs->tpl_ctrls.enable && ppcs->tpl_src_data_ready &&
+    if (pcs->slice_type != I_SLICE && ppcs->tpl_ctrls.enable && ppcs->tpl_src_data_ready &&
         (pcs->temporal_layer_index < ppcs->hierarchical_levels || !ppcs->tpl_ctrls.disable_intra_pred_nref)) {
         const int      aligned16_width = (ppcs->aligned_width + 15) >> 4;
         const int      tpl_blk_size    = ppcs->tpl_ctrls.dispenser_search_level == 0 ? 16
