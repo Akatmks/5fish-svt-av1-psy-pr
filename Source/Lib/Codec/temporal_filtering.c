@@ -4041,9 +4041,8 @@ static uint32_t filt_unfilt_dist(
                 unfil,
                 buffer_index,
                 stride_y,
-                ppcs->scs->b64_size,
-                ppcs->scs->b64_size));
-
+                MIN(ppcs->scs->b64_size, ppcs->aligned_width - b64_origin_x),
+                MIN(ppcs->scs->b64_size, ppcs->aligned_height - b64_origin_y)));
         }
     }
     return (dist / (pic_width_in_b64 * pic_height_in_b64));
